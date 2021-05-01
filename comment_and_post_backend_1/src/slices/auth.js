@@ -92,7 +92,7 @@ export const handleLogin = data => async dispatch => {
   try {
     dispatch(login_attempt());
     const body = await axios({
-      url: 'http://localhost:3001/auth/login',
+      url: 'https://thehackynews.herokuapp.com/auth/login',
       method: 'POST',
       data,
       headers: getHeaders(),
@@ -116,7 +116,7 @@ export const handleGoogleLogin = data => async dispatch => {
   try {
     dispatch(login_attempt());
     const body = await axios({
-      url: 'http://localhost:3001/auth/googlelogin',
+      url: 'https://thehackynews.herokuapp.com/auth/googlelogin',
       method: 'POST',
       data,
       headers: getHeaders(),
@@ -139,7 +139,7 @@ export const handleGoogleLogin = data => async dispatch => {
 export const handleSignup = data => async dispatch => {
   try {
     dispatch(signup_attempt());
-    const body = await axios.post('http://localhost:3001/auth/signup', data, {
+    const body = await axios.post('https://thehackynews.herokuapp.com/auth/signup', data, {
       headers: getHeaders(),
     });
     const res = body.data;
@@ -158,7 +158,7 @@ export const handleSignup = data => async dispatch => {
 export const getSingleUser = () => async dispatch => {
   try {
     dispatch(single_user_attempt());
-    const body = await axios.get('http://localhost:3001/auth/single', {
+    const body = await axios.get('https://thehackynews.herokuapp.com/auth/single', {
       headers: getHeaders(),
     });
     if (body.status === 401) {

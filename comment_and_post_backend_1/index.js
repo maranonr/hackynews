@@ -82,7 +82,7 @@ app.use('/posts', authorize, postsRouter);
 //app.use('/collections', collectionsRouter);
 
 app.get('/', (req, res) => {
-  res.json({success: true});
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
 const userPopulatedFields = 'id _id email name';

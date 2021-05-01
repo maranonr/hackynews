@@ -23,7 +23,7 @@ import store from './store';
 import Navbar from './components/Navbar';
 import SinglePost from './components/SinglePost';
 
-connect('http://localhost:3001', store);
+connect('https://thehackynews.herokuapp.com/', store);
 
 const App = () => {
   const dispatch = useDispatch();

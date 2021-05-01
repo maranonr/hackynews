@@ -73,7 +73,7 @@ export const fetchPosts = () => async dispatch => {
   const headers = getHeaders();
   try {
     dispatch(posts_attempt());
-    const body = await fetch('http://localhost:3001/posts', {headers});
+    const body = await fetch('https://thehackynews.herokuapp.com/posts', {headers});
     const res = await body.json();
     dispatch(posts_success(res));
     return res;
@@ -86,7 +86,7 @@ export const submitPost = data => async dispatch => {
   const headers = getHeaders();
   try {
     dispatch(submit_post_attempt());
-    const body = await fetch('http://localhost:3001/posts', {
+    const body = await fetch('https://thehackynews.herokuapp.com/posts', {
       method: 'POST',
       body: JSON.stringify(data),
       headers,
@@ -105,7 +105,7 @@ export const updatePost = (id, data) => async dispatch => {
   try {
     const newData = {...data, postId: id};
     dispatch(submit_post_attempt());
-    const body = await fetch(`http://localhost:3001/posts/updatePost`, {
+    const body = await fetch(`https://thehackynews.herokuapp.com/posts/updatePost`, {
       method: 'POST',
       body: JSON.stringify(newData),
       headers,
@@ -122,7 +122,7 @@ export const deletePost = id => async dispatch => {
   const headers = getHeaders();
   try {
     dispatch(submit_post_attempt());
-    const body = await fetch(`http://localhost:3001/posts/delete/${id}`, {
+    const body = await fetch(`https://thehackynews.herokuapp.com/posts/delete/${id}`, {
       method: 'POST',
       headers,
     });
@@ -137,7 +137,7 @@ export const deletePost = id => async dispatch => {
 export const deleteComment = (postId, commentId) => async dispatch => {
   const headers = getHeaders();
   try {
-    const body = await fetch(`http://localhost:3001/posts/comment/delete`, {
+    const body = await fetch(`https://thehackynews.herokuapp.com/posts/comment/delete`, {
       method: 'POST',
       headers,
       body: JSON.stringify({postId, commentId}),
@@ -153,7 +153,7 @@ export const addComment = (content, id) => async dispatch => {
   const headers = getHeaders();
   try {
     const res = await axios.post(
-      'http://localhost:3001/posts/comment',
+      'https://thehackynews.herokuapp.com/posts/comment',
       {content, id},
       {headers}
     );
@@ -171,7 +171,7 @@ export const getSinglePost = async id => {
   const headers = getHeaders();
   try {
     const res = await axios.get(
-      'http://localhost:3001/posts/singlePost/' + id,
+      'https://thehackynews.herokuapp.com/posts/singlePost/' + id,
       {headers}
     );
     return res.data;
